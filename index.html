@@ -1,1 +1,1013 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SEO Image Optimizer | SEO Schweiz</title>
+<meta name="description" content="Free SEO image optimizer for Google, Bing, YouTube and Facebook. Compress, resize and create SEO-friendly images.">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f5f6f8;
+color:#171717;
+}
+
+header{
+background:#fff;
+border-bottom:1px solid #e5e5e5;
+padding:25px 20px;
+text-align:center;
+}
+
+.logo{
+font-size:29px;
+font-weight:800;
+letter-spacing:-1px;
+}
+
+.logo span{color:#e30613}
+
+header p{
+color:#666;
+margin:7px 0 0;
+}
+
+.container{
+max-width:900px;
+margin:35px auto;
+padding:0 18px 60px;
+}
+
+.card{
+background:#fff;
+border-radius:16px;
+padding:28px;
+margin-bottom:22px;
+box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+
+h1{
+margin-top:0;
+font-size:32px;
+}
+
+h2{
+font-size:20px;
+margin-top:0;
+}
+
+.platforms{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-top:18px;
+}
+
+.platform{
+border:2px solid #ddd;
+background:#fff;
+padding:13px 5px;
+border-radius:9px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.platform.active{
+border-color:#e30613;
+background:#fff4f4;
+color:#c9000b;
+}
+
+.upload{
+display:block;
+border:2px dashed #bbb;
+border-radius:14px;
+padding:42px 20px;
+text-align:center;
+cursor:pointer;
+background:#fafafa;
+}
+
+.upload:hover{border-color:#e30613}
+
+#fileInput{display:none}
+
+#preview{
+display:none;
+max-width:100%;
+max-height:420px;
+margin:20px auto 0;
+border-radius:10px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin:18px 0 7px;
+}
+
+input,select{
+width:100%;
+border:1px solid #ccc;
+border-radius:8px;
+padding:12px;
+font-size:16px;
+background:#fff;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.button{
+display:block;
+width:100%;
+border:0;
+border-radius:9px;
+padding:16px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+margin-top:22px;
+background:#e30613;
+color:#fff;
+}
+
+.button:hover{background:#bf0010}
+
+.button.secondary{background:#171717}
+
+.result{display:none}
+
+.result-box{
+background:#f6f6f6;
+padding:13px;
+border-radius:8px;
+margin-bottom:10px;
+word-break:break-word;
+}
+
+.result-box strong{
+display:block;
+font-size:12px;
+color:#777;
+text-transform:uppercase;
+margin-bottom:5px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin:20px 0;
+}
+
+.stat{
+background:#f6f6f6;
+padding:15px;
+text-align:center;
+border-radius:9px;
+}
+
+.stat b{
+display:block;
+font-size:20px;
+}
+
+.stat span{
+color:#777;
+font-size:12px;
+}
+
+.notice{
+font-size:13px;
+color:#666;
+margin-top:15px;
+line-height:1.5;
+}
+
+footer{
+text-align:center;
+padding:30px;
+color:#777;
+font-size:13px;
+}
+
+footer a{
+color:#333;
+text-decoration:none;
+font-weight:bold;
+}
+
+@media(max-width:700px){
+
+.platforms{
+grid-template-columns:1fr 1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">SEO <span>SCHWEIZ</span></div>
+<p>SEO Image Optimizer</p>
+</header>
+
+<main class="container">
+
+<div class="card">
+
+<h1>SEO Image Optimizer</h1>
+
+<p>
+Optimize your images for search engines and social media.
+The image is processed directly in your browser.
+</p>
+
+<h2>1. Select Platform</h2>
+
+<div class="platforms">
+
+<button class="platform active" data-platform="google">
+Google
+</button>
+
+<button class="platform" data-platform="bing">
+Bing
+</button>
+
+<button class="platform" data-platform="youtube">
+YouTube
+</button>
+
+<button class="platform" data-platform="facebook">
+Facebook
+</button>
+
+<button class="platform" data-platform="all">
+ALL
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>2. Upload Image</h2>
+
+<label class="upload" for="fileInput">
+<strong>Choose an image</strong>
+<br><br>
+JPG, PNG or WebP
+</label>
+
+<input
+type="file"
+id="fileInput"
+accept="image/jpeg,image/png,image/webp"
+>
+
+<img id="preview" alt="Uploaded image preview">
+
+</div>
+
+
+<div class="card">
+
+<h2>3. SEO Settings</h2>
+
+<label for="keyword">
+Main Keyword
+</label>
+
+<input
+id="keyword"
+type="text"
+placeholder="Example: Street Art Gallery Barcelona"
+>
+
+<label for="brand">
+Brand / Creator
+</label>
+
+<input
+id="brand"
+type="text"
+value="SEO Schweiz"
+>
+
+<label for="website">
+Website / Source
+</label>
+
+<input
+id="website"
+type="url"
+value="https://www.seoschweiz.net"
+>
+
+
+<div class="row">
+
+<div>
+
+<label for="width">
+Maximum Width
+</label>
+
+<select id="width">
+
+<option value="1920">1920 px</option>
+<option value="1600">1600 px</option>
+<option value="1200" selected>1200 px</option>
+<option value="1080">1080 px</option>
+<option value="800">800 px</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="quality">
+Image Quality
+</label>
+
+<select id="quality">
+
+<option value="0.95">Maximum</option>
+<option value="0.88" selected>High</option>
+<option value="0.78">Medium</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<label for="format">
+Output Format
+</label>
+
+<select id="format">
+
+<option value="image/webp">
+WebP
+</option>
+
+<option value="image/jpeg">
+JPG
+</option>
+
+<option value="image/png">
+PNG
+</option>
+
+</select>
+
+
+<button class="button" id="optimizeButton">
+Optimize Image
+</button>
+
+<p class="notice">
+No image is uploaded to SEO Schweiz. Processing takes place locally
+in your browser.
+</p>
+
+</div>
+
+
+<div class="card result" id="result">
+
+<h2>SEO Optimization Result</h2>
+
+<div class="stats">
+
+<div class="stat">
+<b id="originalSize">–</b>
+<span>Original</span>
+</div>
+
+<div class="stat">
+<b id="newSize">–</b>
+<span>Optimized</span>
+</div>
+
+<div class="stat">
+<b id="saving">–</b>
+<span>Size Change</span>
+</div>
+
+</div>
+
+
+<div class="result-box">
+<strong>SEO Filename</strong>
+<span id="filenameResult"></span>
+</div>
+
+
+<div class="result-box">
+<strong>ALT Text</strong>
+<span id="altResult"></span>
+</div>
+
+
+<div class="result-box">
+<strong>Image Title</strong>
+<span id="titleResult"></span>
+</div>
+
+
+<div class="result-box">
+<strong>Description</strong>
+<span id="descriptionResult"></span>
+</div>
+
+
+<div class="result-box">
+<strong>Creator</strong>
+<span id="creatorResult"></span>
+</div>
+
+
+<div class="result-box">
+<strong>Source / Website</strong>
+<span id="sourceResult"></span>
+</div>
+
+
+<div class="result-box">
+<strong>HTML Image Code</strong>
+<span id="htmlResult"></span>
+</div>
+
+
+<button class="button secondary" id="downloadButton">
+Download Optimized Image
+</button>
+
+</div>
+
+</main>
+
+
+<footer>
+
+SEO Image Optimizer by
+<a href="https://www.seoschweiz.net">
+SEO Schweiz
+</a>
+
+<br><br>
+
+Google · Bing · YouTube · Facebook Image Optimization
+
+</footer>
+
+
+<script>
+
+let selectedPlatform = "google";
+let uploadedFile = null;
+let optimizedBlob = null;
+let finalFilename = "";
+let currentObjectURL = null;
+
+const platformButtons =
+document.querySelectorAll(".platform");
+
+
+platformButtons.forEach(button => {
+
+button.addEventListener("click", () => {
+
+platformButtons.forEach(b =>
+b.classList.remove("active")
+);
+
+button.classList.add("active");
+
+selectedPlatform =
+button.dataset.platform;
+
+setPlatformDefaults();
+
+});
+
+});
+
+
+function setPlatformDefaults(){
+
+const width =
+document.getElementById("width");
+
+const format =
+document.getElementById("format");
+
+
+if(selectedPlatform === "google"){
+
+width.value = "1200";
+format.value = "image/webp";
+
+}
+
+
+if(selectedPlatform === "bing"){
+
+width.value = "1200";
+format.value = "image/webp";
+
+}
+
+
+if(selectedPlatform === "youtube"){
+
+width.value = "1200";
+format.value = "image/jpeg";
+
+}
+
+
+if(selectedPlatform === "facebook"){
+
+width.value = "1200";
+format.value = "image/jpeg";
+
+}
+
+
+if(selectedPlatform === "all"){
+
+width.value = "1200";
+format.value = "image/webp";
+
+}
+
+}
+
+
+document
+.getElementById("fileInput")
+.addEventListener("change", function(e){
+
+uploadedFile = e.target.files[0];
+
+if(!uploadedFile) return;
+
+
+if(currentObjectURL){
+
+URL.revokeObjectURL(currentObjectURL);
+
+}
+
+
+currentObjectURL =
+URL.createObjectURL(uploadedFile);
+
+
+const preview =
+document.getElementById("preview");
+
+preview.src = currentObjectURL;
+
+preview.style.display = "block";
+
+});
+
+
+function slugify(text){
+
+return text
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.replace(/[^a-z0-9]+/g,"-")
+.replace(/^-+|-+$/g,"");
+
+}
+
+
+function formatBytes(bytes){
+
+if(bytes < 1024){
+
+return bytes + " B";
+
+}
+
+if(bytes < 1048576){
+
+return (bytes / 1024)
+.toFixed(0) + " KB";
+
+}
+
+return (bytes / 1048576)
+.toFixed(2) + " MB";
+
+}
+
+
+function escapeHTMLAttribute(text){
+
+return text
+.replace(/&/g,"&amp;")
+.replace(/"/g,"&quot;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;");
+
+}
+
+
+document
+.getElementById("optimizeButton")
+.addEventListener("click", () => {
+
+if(!uploadedFile){
+
+alert("Please upload an image first.");
+
+return;
+
+}
+
+
+const keyword =
+document
+.getElementById("keyword")
+.value
+.trim();
+
+
+if(!keyword){
+
+alert("Please enter a main keyword.");
+
+return;
+
+}
+
+
+const brand =
+document
+.getElementById("brand")
+.value
+.trim() || "SEO Schweiz";
+
+
+const website =
+document
+.getElementById("website")
+.value
+.trim();
+
+
+const maxWidth =
+parseInt(
+document
+.getElementById("width")
+.value
+);
+
+
+const quality =
+parseFloat(
+document
+.getElementById("quality")
+.value
+);
+
+
+const format =
+document
+.getElementById("format")
+.value;
+
+
+const image =
+new Image();
+
+
+image.onload = () => {
+
+let newWidth =
+image.naturalWidth;
+
+let newHeight =
+image.naturalHeight;
+
+
+if(newWidth > maxWidth){
+
+const ratio =
+maxWidth / newWidth;
+
+newWidth =
+maxWidth;
+
+newHeight =
+Math.round(
+newHeight * ratio
+);
+
+}
+
+
+const canvas =
+document.createElement("canvas");
+
+canvas.width =
+newWidth;
+
+canvas.height =
+newHeight;
+
+
+const ctx =
+canvas.getContext("2d");
+
+
+if(format === "image/jpeg"){
+
+ctx.fillStyle = "#ffffff";
+
+ctx.fillRect(
+0,
+0,
+newWidth,
+newHeight
+);
+
+}
+
+
+ctx.drawImage(
+image,
+0,
+0,
+newWidth,
+newHeight
+);
+
+
+canvas.toBlob(blob => {
+
+if(!blob){
+
+alert(
+"Your browser could not create the optimized image."
+);
+
+return;
+
+}
+
+
+optimizedBlob =
+blob;
+
+
+let extension =
+"webp";
+
+
+if(format === "image/jpeg"){
+
+extension = "jpg";
+
+}
+
+
+if(format === "image/png"){
+
+extension = "png";
+
+}
+
+
+finalFilename =
+slugify(keyword) +
+"-" +
+selectedPlatform +
+"." +
+extension;
+
+
+const platformName =
+selectedPlatform === "all"
+? "Google, Bing, YouTube and Facebook"
+: selectedPlatform.charAt(0).toUpperCase() +
+selectedPlatform.slice(1);
+
+
+const alt =
+keyword;
+
+
+const title =
+keyword +
+" | " +
+brand;
+
+
+const description =
+keyword +
+" image optimized for " +
+platformName +
+". Source: " +
+website;
+
+
+const html =
+'<img src="' +
+escapeHTMLAttribute(finalFilename) +
+'" alt="' +
+escapeHTMLAttribute(alt) +
+'" title="' +
+escapeHTMLAttribute(title) +
+'" loading="lazy" decoding="async" width="' +
+newWidth +
+'" height="' +
+newHeight +
+'">';
+
+
+document
+.getElementById("filenameResult")
+.textContent =
+finalFilename;
+
+
+document
+.getElementById("altResult")
+.textContent =
+alt;
+
+
+document
+.getElementById("titleResult")
+.textContent =
+title;
+
+
+document
+.getElementById("descriptionResult")
+.textContent =
+description;
+
+
+document
+.getElementById("creatorResult")
+.textContent =
+brand;
+
+
+document
+.getElementById("sourceResult")
+.textContent =
+website;
+
+
+document
+.getElementById("htmlResult")
+.textContent =
+html;
+
+
+document
+.getElementById("originalSize")
+.textContent =
+formatBytes(uploadedFile.size);
+
+
+document
+.getElementById("newSize")
+.textContent =
+formatBytes(blob.size);
+
+
+const percentage =
+Math.round(
+(1 - blob.size /
+uploadedFile.size) * 100
+);
+
+
+document
+.getElementById("saving")
+.textContent =
+percentage >= 0
+? percentage + "% smaller"
+: Math.abs(percentage) + "% larger";
+
+
+document
+.getElementById("result")
+.style.display =
+"block";
+
+
+document
+.getElementById("result")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+
+}, format, quality);
+
+};
+
+
+image.onerror = () => {
+
+alert(
+"The selected image could not be processed."
+);
+
+};
+
+
+image.src =
+URL.createObjectURL(uploadedFile);
+
+});
+
+
+document
+.getElementById("downloadButton")
+.addEventListener("click", () => {
+
+if(!optimizedBlob){
+
+return;
+
+}
+
+
+const downloadURL =
+URL.createObjectURL(
+optimizedBlob
+);
+
+
+const link =
+document.createElement("a");
+
+link.href =
+downloadURL;
+
+link.download =
+finalFilename;
+
+
+document.body.appendChild(link);
+
+link.click();
+
+link.remove();
+
+
+setTimeout(() => {
+
+URL.revokeObjectURL(
+downloadURL
+);
+
+},1000);
+
+});
+
+</script>
+
+</body>
+</html>
